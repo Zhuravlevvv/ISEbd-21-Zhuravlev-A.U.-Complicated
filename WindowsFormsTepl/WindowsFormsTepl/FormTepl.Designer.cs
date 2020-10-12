@@ -141,7 +141,6 @@
             this.Name = "FormTepl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тепловоз";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTep)).EndInit();
             this.ResumeLayout(false);
 

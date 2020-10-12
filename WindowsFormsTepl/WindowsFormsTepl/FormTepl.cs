@@ -18,13 +18,7 @@ namespace WindowsFormsTepl
         {
             InitializeComponent();
             comboBoxTrumpet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
- 
+        } 
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxTep.Width, pictureBoxTep.Height);
@@ -32,7 +26,6 @@ namespace WindowsFormsTepl
             tep.DrawTep(gr);
             pictureBoxTep.Image = bmp;
         }
-
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -49,7 +42,6 @@ namespace WindowsFormsTepl
                 MessageBox.Show("Выберете количество труб, и попробуйте заново!");
             }         
         }
-
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
