@@ -12,13 +12,12 @@ namespace WindowsFormsTepl
 {
     public partial class FormTepl : Form
     {
-        private Teplovoz tep;
-      
+        private ITrain tep;
         public FormTepl()
         {
             InitializeComponent();
-            comboBoxTrumpet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        } 
+            comboBoxTrumpetCount.Items.AddRange(new string[] { "1", "2", "3" });
+        }
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxTep.Width, pictureBoxTep.Height);
@@ -26,21 +25,64 @@ namespace WindowsFormsTepl
             tep.DrawTep(gr);
             pictureBoxTep.Image = bmp;
         }
-        private void buttonCreate_Click(object sender, EventArgs e)
+
+        private void buttonCreateTep_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            if (comboBoxTrumpet.SelectedIndex > -1)
+            Random rnd = new Random(120);
+
+            tep = new Teplovoz(rnd.Next(70, 300), rnd.Next(1000, 2000), Color.ForestGreen,
+            Color.Yellow, Color.Gray, Convert.ToInt32(comboBoxTrumpetCount.SelectedIndex + 1), FormOfTrumpet(), true, true);
+            tep.SetPosition(rnd.Next(40, 600), rnd.Next(10, 100), pictureBoxTep.Width,
+            pictureBoxTep.Height);
+
+            buttonSecondForm.Enabled = true;
+            buttonFirstForm.Enabled = true;
+            buttonThirdForm.Enabled = true;
+
+            Draw();
+        }
+        private void buttonCreateLoc_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random(120);
+
+            tep = new Locomotive(rnd.Next(70, 300), rnd.Next(1000, 2000), Color.Green);
+            tep.SetPosition(rnd.Next(40, 600), rnd.Next(10, 100), pictureBoxTep.Width,
+           pictureBoxTep.Height);
+
+            Draw();
+        }
+        private void buttonTrumpetsForm_Click(object sender, EventArgs e)
+        {
+            if (sender == buttonFirstForm)
             {
-                tep = new Teplovoz(rnd.Next(70, 300), rnd.Next(1000, 2000), Convert.ToInt32(comboBoxTrumpet.SelectedItem.ToString()), Color.ForestGreen,
-                Color.Gray, true, true);
-                tep.SetPosition(rnd.Next(40, 600), rnd.Next(10, 100), pictureBoxTep.Width,
-                pictureBoxTep.Height);
-                Draw();
+                buttonSecondForm.Enabled = false;
+                buttonThirdForm.Enabled = false;
+            }
+            else if (sender == buttonSecondForm)
+            {
+                buttonFirstForm.Enabled = false;
+                buttonThirdForm.Enabled = false;
             }
             else
             {
-                MessageBox.Show("Выберете количество труб, и попробуйте заново!");
-            }         
+                buttonFirstForm.Enabled = false;
+                buttonSecondForm.Enabled = false;
+            }
+        }
+        private int FormOfTrumpet()
+        {
+            if (buttonFirstForm.Enabled == true)
+            {
+                return 0;
+            }
+            else if (buttonSecondForm.Enabled == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
@@ -62,6 +104,6 @@ namespace WindowsFormsTepl
                     break;
             }
             Draw();
-        }       
+        }
     }
 }

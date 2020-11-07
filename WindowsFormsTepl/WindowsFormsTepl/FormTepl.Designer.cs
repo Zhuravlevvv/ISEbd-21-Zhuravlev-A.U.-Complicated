@@ -30,13 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTepl));
             this.pictureBoxTep = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
-            this.comboBoxTrumpet = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelForms = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.buttonCreateLoc = new System.Windows.Forms.Button();
+            this.buttonCreateTep = new System.Windows.Forms.Button();
+            this.buttonThirdForm = new System.Windows.Forms.Button();
+            this.comboBoxTrumpetCount = new System.Windows.Forms.ComboBox();
+            this.buttonSecondForm = new System.Windows.Forms.Button();
+            this.buttonFirstForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTep)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxTep
@@ -47,18 +55,6 @@
             this.pictureBoxTep.Size = new System.Drawing.Size(800, 450);
             this.pictureBoxTep.TabIndex = 0;
             this.pictureBoxTep.TabStop = false;
-            
-            // 
-            // buttonCreate
-            // 
-            this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(89, 23);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonRight
             // 
@@ -113,35 +109,116 @@
             this.buttonUp.UseVisualStyleBackColor = true;
             this.buttonUp.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // comboBoxTrumpet
+            // groupBox1
             // 
-            this.comboBoxTrumpet.FormattingEnabled = true;
-            this.comboBoxTrumpet.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.comboBoxTrumpet.Location = new System.Drawing.Point(107, 14);
-            this.comboBoxTrumpet.Name = "comboBoxTrumpet";
-            this.comboBoxTrumpet.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxTrumpet.TabIndex = 6;
-            
+            this.groupBox1.Controls.Add(this.labelForms);
+            this.groupBox1.Controls.Add(this.labelCount);
+            this.groupBox1.Controls.Add(this.buttonCreateLoc);
+            this.groupBox1.Controls.Add(this.buttonCreateTep);
+            this.groupBox1.Controls.Add(this.buttonThirdForm);
+            this.groupBox1.Controls.Add(this.comboBoxTrumpetCount);
+            this.groupBox1.Controls.Add(this.buttonSecondForm);
+            this.groupBox1.Controls.Add(this.buttonFirstForm);
+            this.groupBox1.Location = new System.Drawing.Point(600, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 98);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Создать";
+            // 
+            // labelForms
+            // 
+            this.labelForms.AutoSize = true;
+            this.labelForms.Location = new System.Drawing.Point(6, 80);
+            this.labelForms.Name = "labelForms";
+            this.labelForms.Size = new System.Drawing.Size(69, 13);
+            this.labelForms.TabIndex = 13;
+            this.labelForms.Text = "Форма труб";
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Location = new System.Drawing.Point(6, 49);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(66, 13);
+            this.labelCount.TabIndex = 12;
+            this.labelCount.Text = "Кол-во труб";
+            // 
+            // buttonCreateLoc
+            // 
+            this.buttonCreateLoc.Location = new System.Drawing.Point(6, 19);
+            this.buttonCreateLoc.Name = "buttonCreateLoc";
+            this.buttonCreateLoc.Size = new System.Drawing.Size(80, 21);
+            this.buttonCreateLoc.TabIndex = 8;
+            this.buttonCreateLoc.Text = "Локомотив";
+            this.buttonCreateLoc.UseVisualStyleBackColor = true;
+            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonCreateLoc_Click);
+            // 
+            // buttonCreateTep
+            // 
+            this.buttonCreateTep.Location = new System.Drawing.Point(91, 19);
+            this.buttonCreateTep.Name = "buttonCreateTep";
+            this.buttonCreateTep.Size = new System.Drawing.Size(76, 21);
+            this.buttonCreateTep.TabIndex = 7;
+            this.buttonCreateTep.Text = "Тепловоз";
+            this.buttonCreateTep.UseVisualStyleBackColor = true;
+            this.buttonCreateTep.Click += new System.EventHandler(this.buttonCreateTep_Click);
+            // 
+            // buttonThirdForm
+            // 
+            this.buttonThirdForm.Location = new System.Drawing.Point(161, 73);
+            this.buttonThirdForm.Name = "buttonThirdForm";
+            this.buttonThirdForm.Size = new System.Drawing.Size(35, 20);
+            this.buttonThirdForm.TabIndex = 11;
+            this.buttonThirdForm.Text = "3Ф";
+            this.buttonThirdForm.UseVisualStyleBackColor = true;
+            this.buttonThirdForm.Click += new System.EventHandler(this.buttonTrumpetsForm_Click);
+            // 
+            // comboBoxTrumpetCount
+            // 
+            this.comboBoxTrumpetCount.FormattingEnabled = true;
+            this.comboBoxTrumpetCount.Location = new System.Drawing.Point(78, 46);
+            this.comboBoxTrumpetCount.Name = "comboBoxTrumpetCount";
+            this.comboBoxTrumpetCount.Size = new System.Drawing.Size(46, 21);
+            this.comboBoxTrumpetCount.TabIndex = 6;
+            // 
+            // buttonSecondForm
+            // 
+            this.buttonSecondForm.Location = new System.Drawing.Point(118, 73);
+            this.buttonSecondForm.Name = "buttonSecondForm";
+            this.buttonSecondForm.Size = new System.Drawing.Size(37, 20);
+            this.buttonSecondForm.TabIndex = 10;
+            this.buttonSecondForm.Text = "2Ф";
+            this.buttonSecondForm.UseVisualStyleBackColor = true;
+            this.buttonSecondForm.Click += new System.EventHandler(this.buttonTrumpetsForm_Click);
+            // 
+            // buttonFirstForm
+            // 
+            this.buttonFirstForm.Location = new System.Drawing.Point(78, 73);
+            this.buttonFirstForm.Name = "buttonFirstForm";
+            this.buttonFirstForm.Size = new System.Drawing.Size(34, 20);
+            this.buttonFirstForm.TabIndex = 9;
+            this.buttonFirstForm.Text = "1Ф";
+            this.buttonFirstForm.UseVisualStyleBackColor = true;
+            this.buttonFirstForm.Click += new System.EventHandler(this.buttonTrumpetsForm_Click);
             // 
             // FormTepl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBoxTrumpet);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
-            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxTep);
             this.Name = "FormTepl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тепловоз";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTep)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -149,12 +226,19 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxTep;
-        private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonUp;
-        private System.Windows.Forms.ComboBox comboBoxTrumpet;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelForms;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Button buttonCreateLoc;
+        private System.Windows.Forms.Button buttonCreateTep;
+        private System.Windows.Forms.Button buttonThirdForm;
+        private System.Windows.Forms.ComboBox comboBoxTrumpetCount;
+        private System.Windows.Forms.Button buttonSecondForm;
+        private System.Windows.Forms.Button buttonFirstForm;
     }
 }
 

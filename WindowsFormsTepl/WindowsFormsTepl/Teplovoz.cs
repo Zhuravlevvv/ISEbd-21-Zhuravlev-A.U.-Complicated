@@ -7,82 +7,43 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTepl
 {
-    class Teplovoz
+    public class Teplovoz : Locomotive
     {
-        private int Posx;
-        private int Posy;
-        private int pctrWidth;
-        private int pctrHeight;       
-        private readonly int tepWidth = 120;
-        private readonly int tepHeight = 58;
-        public int MaxSpeed { private set; get; }
-        public float Weight { private set; get; }
-        public Color MainColor { private set; get; }
         public Color DopColor { private set; get; }
-        public int Trumpet { private set; get; } //трубы
 
-        private Trumpets trumpets;
+        private IDopElements trumpets;
 
         public bool Tube { private set; get; }
         public bool Line { private set; get; }
-        public Teplovoz(int maxSpeed, float weight, int countTrumpet, Color mainColor, Color dopColor,
-        bool tube, bool line)
+
+        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, Color trumpColor,
+        int trumpet, int trumpetsForm, bool line, bool tube)
+        : base(maxSpeed, weight, mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
             DopColor = dopColor;
-            Line = line;
             Tube = tube;
+            Line = line;
 
-            trumpets = new Trumpets();
-            trumpets.CountTrumpet = countTrumpet;
-        }
-        public void SetPosition(int x, int y, int width, int height) //начальная поз.
-        {                        
-            Posx = x;
-            Posy = y;
-            pctrWidth = width;
-            pctrHeight = height;
-        }
-        public void MoveTransport(Direction direction) //передвижениt 
-        {
-            float step1 = MaxSpeed * 30 / Weight;
-            int step = Convert.ToInt32(step1);
-            switch (direction)
+            if (trumpetsForm == 0)
             {
-                // вправо
-                case Direction.Right:
-                    if (Posx + step < pctrWidth - tepWidth)
-                    {
-                        Posx += step;
-                    }
-                    break;
-                //влево
-                case Direction.Left:
-                    if (Posx - step > 0)
-                    {
-                        Posx -= step;
-                    }
-                    break;
-                //вверх
-                case Direction.Up:
-                    if (Posy - step > 0)
-                    {
-                        Posy -= step;
-                    }
-                    break;
-                //вниз
-                case Direction.Down:
-                    if (Posy + step < pctrHeight - tepHeight)
-                    {
-                        Posy += step;
-                    }
-                    break;
+                trumpets = new TrumpetsStandart(trumpet, trumpColor);
+            }
+            else if (trumpetsForm == 1)
+            {
+                trumpets = new TrumpetsTriangle(trumpet, trumpColor);
+            }
+            else if (trumpetsForm == 2)
+            {
+                trumpets = new TrumpetsTrapeze(trumpet, trumpColor);
             }
         }
-        public void DrawTep(Graphics g) //отрисовка
+
+        public override void DrawTep(Graphics g) //отрисовка
         {
+            base.DrawTep(g);
             Pen pen = new Pen(Color.Black);
             //колёса
             Brush brBlack = new SolidBrush(Color.Black); //kolesa 1
@@ -100,6 +61,7 @@ namespace WindowsFormsTepl
             g.FillEllipse(btBlack, Posx + 87, Posy + 52, 2, 4);
             g.FillEllipse(btBlack, Posx + 98, Posy + 52, 2, 4);
             g.FillEllipse(btBlack, Posx + 111, Posy + 52, 2, 4);
+
             if (Tube)
             {
                 Brush n = new SolidBrush(MainColor);
@@ -108,8 +70,10 @@ namespace WindowsFormsTepl
                 l.Add(new Point(Posx + 85, Posy + 30));
                 l.Add(new Point(Posx + 90, Posy + 20));
                 l.Add(new Point(Posx + 90, Posy + 35));
+
                 g.FillPolygon(n, l.ToArray<Point>());
             }
+
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 19));
@@ -118,7 +82,9 @@ namespace WindowsFormsTepl
             p.Add(new Point(Posx + 120, Posy + 50));
             p.Add(new Point(Posx + 120, Posy + 20));
             p.Add(new Point(Posx + 75, Posy + 15));
+
             g.FillPolygon(b, p.ToArray<Point>());
+
             if (Line)//1
             {
                 Brush m = new SolidBrush(DopColor);
@@ -130,17 +96,17 @@ namespace WindowsFormsTepl
 
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
-            if (Line)//verx
+            if (Tube)
             {
-                Brush m = new SolidBrush(Color.Gray);
-                List<Point> tp = new List<Point>(4);
-                tp.Add(new Point(Posx + 3, Posy + 23));
-                tp.Add(new Point(Posx + 125, Posy + 23));
-                tp.Add(new Point(Posx + 110, Posy + 13));
-                tp.Add(new Point(Posx + 20, Posy + 13));
-
-                g.FillPolygon(m, tp.ToArray<Point>());
-            }        
+                //verx        
+                Brush w = new SolidBrush(Color.Gray);
+                List<Point> qw = new List<Point>(4);
+                qw.Add(new Point(Posx + 3, Posy + 23));
+                qw.Add(new Point(Posx + 125, Posy + 23));
+                qw.Add(new Point(Posx + 110, Posy + 13));
+                qw.Add(new Point(Posx + 20, Posy + 13));
+                g.FillPolygon(w, qw.ToArray<Point>());
+            }
             if (Line)//2
             {
                 Brush m = new SolidBrush(DopColor);
@@ -152,6 +118,7 @@ namespace WindowsFormsTepl
 
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
+
             if (Line)//3
             {
                 Brush m = new SolidBrush(DopColor);
@@ -161,10 +128,10 @@ namespace WindowsFormsTepl
                 tp.Add(new Point(Posx + 93, Posy + 48));
                 tp.Add(new Point(Posx + 90, Posy + 48));
                 g.FillPolygon(m, tp.ToArray<Point>());
-            }      
-            trumpets.DrawTrumpet(g, Posx, Posy);
+            }
+            trumpets.DrawElements(g, Posx, Posy);
         }
     }
 }
-    
+
 
