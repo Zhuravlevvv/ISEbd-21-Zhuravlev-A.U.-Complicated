@@ -16,7 +16,7 @@ namespace WindowsFormsTepl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTepl());
+            Application.Run(new FormDepo());
         }
     }
 }
