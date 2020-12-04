@@ -9,13 +9,41 @@ namespace WindowsFormsTepl
 {
     public class Teplovoz : Locomotive
     {
-        private IDopElements trumpets;
+        private IDopElements trumpet;
         public Color DopColor { private set; get; }
         public bool Tube { private set; get; }
         public bool Line { private set; get; }
+        public bool DopOrnament { protected set; get; }
+        public int Trumpets { private set; get; }
+        public string TrumpetsForm { private set; get; }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+            if (TrumpetsForm == "TrumpetsStandart")
+            {
+                trumpet = new TrumpetsStandart(Trumpets, DopColor);
+            }
+            else if (TrumpetsForm == "TrumpetsTriangle")
+            {
+                trumpet = new TrumpetsTriangle(Trumpets, DopColor);
+            }
+            else if (TrumpetsForm == "TrumpetsTrapeze")
+            {
+                trumpet = new TrumpetsTrapeze(Trumpets, DopColor);
+            }
+        }
+        public void SetTrumpets(IDopElements trumpets)
+        {
+            trumpet = trumpets;
+            TrumpetsForm = trumpet.GetType().Name;
+        }
 
-        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, Color trumpColor, bool line, bool tube,
-         int trumpet, int trumpetsForm)
+        public void SetTrumpetsNumber(int trumpetNumber)
+        {
+            Trumpets = trumpetNumber;
+        }
+        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, bool line, bool tube,
+         int trumpets, string trumpetsForm)
         : base(maxSpeed, weight, mainColor)
         {
             MaxSpeed = maxSpeed;
@@ -24,21 +52,34 @@ namespace WindowsFormsTepl
             DopColor = dopColor;
             Tube = tube;
             Line = line;
-            if (trumpetsForm == 0)
+            Trumpets = trumpets;
+            TrumpetsForm = trumpetsForm;
+
+            if (TrumpetsForm == "TrumpetsStandart")
             {
-                trumpets = new TrumpetsStandart(trumpet, trumpColor);
+                trumpet = new TrumpetsStandart(Trumpets, DopColor);
             }
-            else if (trumpetsForm == 1)
+            else if (TrumpetsForm == "TrumpetsTriangle")
             {
-                trumpets = new TrumpetsTriangle(trumpet, trumpColor);
+                trumpet = new TrumpetsTriangle(Trumpets, DopColor);
             }
-            else if (trumpetsForm == 2)
+            else if (TrumpetsForm == "TrumpetsTrapeze")
             {
-                trumpets = new TrumpetsTrapeze(trumpet, trumpColor);
+                trumpet = new TrumpetsTrapeze(Trumpets, DopColor);
             }
         }
+        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor) :
+           base(maxSpeed, weight, mainColor)
+        {
+            DopColor = dopColor;
+        }
+
         public override void DrawTep(Graphics g) //отрисовка
         {
+            if (trumpet != null)
+            {
+                trumpet.DrawElements(g, Posx, Posy);
+            }
             base.DrawTep(g);
             Pen pen = new Pen(Color.Black);
             //колёса
@@ -50,13 +91,16 @@ namespace WindowsFormsTepl
             g.FillEllipse(brBlack, Posx + 92, Posy + 45, 15, 15);
             g.FillEllipse(brBlack, Posx + 104, Posy + 45, 15, 15);
 
-            Brush btBlack = new SolidBrush(DopColor); //kolesa 2
-            g.FillEllipse(btBlack, Posx + 22, Posy + 52, 2, 4);
-            g.FillEllipse(btBlack, Posx + 34, Posy + 52, 2, 4);
-            g.FillEllipse(btBlack, Posx + 46, Posy + 52, 2, 4);
-            g.FillEllipse(btBlack, Posx + 87, Posy + 52, 2, 4);
-            g.FillEllipse(btBlack, Posx + 98, Posy + 52, 2, 4);
-            g.FillEllipse(btBlack, Posx + 111, Posy + 52, 2, 4);
+            if (DopOrnament)
+            {
+                Brush btBlack = new SolidBrush(DopColor); //kolesa 2
+                g.FillEllipse(btBlack, Posx + 22, Posy + 52, 2, 4);
+                g.FillEllipse(btBlack, Posx + 34, Posy + 52, 2, 4);
+                g.FillEllipse(btBlack, Posx + 46, Posy + 52, 2, 4);
+                g.FillEllipse(btBlack, Posx + 87, Posy + 52, 2, 4);
+                g.FillEllipse(btBlack, Posx + 98, Posy + 52, 2, 4);
+                g.FillEllipse(btBlack, Posx + 111, Posy + 52, 2, 4);
+            }
             if (Tube)
             {
                 Brush n = new SolidBrush(MainColor);
@@ -118,7 +162,6 @@ namespace WindowsFormsTepl
                 tp.Add(new Point(Posx + 90, Posy + 48));
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
-            trumpets.DrawElements(g, Posx, Posy);
         }
     }
 }

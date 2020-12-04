@@ -27,5 +27,9 @@ namespace WindowsFormsTepl
         }
         public abstract void MoveTransport(Direction direction);
         public abstract void DrawTep(Graphics g);
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
     }
 }

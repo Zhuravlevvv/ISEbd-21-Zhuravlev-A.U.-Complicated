@@ -18,7 +18,6 @@ namespace WindowsFormsTepl
         public FormDepo()
         {
             InitializeComponent();
-            comboBoxTrumpetCount.Items.AddRange(new string[] { "1", "2", "3" });
             depoCollection = new DepoCollection(pictureBoxDepo.Width, pictureBoxDepo.Height);
             trainStack = new Stack<Train>();
             Draw();
@@ -77,76 +76,24 @@ namespace WindowsFormsTepl
                 }
             }
         }
-        private void buttonSetLoc_Click(object sender, EventArgs e)
+        private void buttonAddTrain_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            var formTeplonfig = new FormTeplConfig();
+            formTeplonfig.AddEvent(AddTrain);
+            formTeplonfig.Show();
+        }
+        private void AddTrain(Train train)
+        {
+            if (train != null && listBoxDepo.SelectedIndex > -1)
             {
-                var train = new Locomotive(100, 1000, dialog.Color);
-                if (depoCollection[listBoxDepo.SelectedItem.ToString()] + train)
+                if ((depoCollection[listBoxDepo.SelectedItem.ToString()]) + train)
                 {
                     Draw();
                 }
                 else
                 {
-                    MessageBox.Show("Не припарковано!");
+                    MessageBox.Show("Поезд не удалось поставить");
                 }
-            }
-        }
-        private void buttonSetTep_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
-                {
-                    buttonSecondForm.Enabled = true;
-                    buttonFirstForm.Enabled = true;
-                    buttonThirdForm.Enabled = true;
-                    var train = new Teplovoz(100, 1000, dialog.Color, dialogDop.Color, dialogDop.Color, true, true, Convert.ToInt32(comboBoxTrumpetCount.SelectedIndex + 1), FormOfTrumpet());
-                    if (depoCollection[listBoxDepo.SelectedItem.ToString()] + train)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не припарковано!");
-                    }
-                }
-            }
-        }
-        private void buttonTrumpetsForm_Click(object sender, EventArgs e)
-        {
-            if (sender == buttonFirstForm)
-            {
-                buttonSecondForm.Enabled = false;
-                buttonThirdForm.Enabled = false;
-            }
-            else if (sender == buttonSecondForm)
-            {
-                buttonFirstForm.Enabled = false;
-                buttonThirdForm.Enabled = false;
-            }
-            else
-            {
-                buttonFirstForm.Enabled = false;
-                buttonSecondForm.Enabled = false;
-            }
-        }
-        private int FormOfTrumpet()
-        {
-            if (buttonFirstForm.Enabled == true)
-            {
-                return 0;
-            }
-            else if (buttonSecondForm.Enabled == true)
-            {
-                return 1;
-            }
-            else
-            {
-                return 2;
             }
         }
         private void buttonTake_Click(object sender, EventArgs e)

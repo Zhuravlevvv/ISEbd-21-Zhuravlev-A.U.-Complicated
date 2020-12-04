@@ -29,15 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxDepo = new System.Windows.Forms.PictureBox();
-            this.groupBoxSetTep = new System.Windows.Forms.GroupBox();
-            this.labelForms = new System.Windows.Forms.Label();
-            this.labelCount = new System.Windows.Forms.Label();
-            this.buttonSetTep = new System.Windows.Forms.Button();
-            this.buttonThirdForm = new System.Windows.Forms.Button();
-            this.comboBoxTrumpetCount = new System.Windows.Forms.ComboBox();
-            this.buttonSecondForm = new System.Windows.Forms.Button();
-            this.buttonFirstForm = new System.Windows.Forms.Button();
-            this.buttonCreateLoc = new System.Windows.Forms.Button();
             this.groupBoxTakeTrain = new System.Windows.Forms.GroupBox();
             this.buttonCheckTrain = new System.Windows.Forms.Button();
             this.buttonTakeTrain = new System.Windows.Forms.Button();
@@ -49,8 +40,8 @@
             this.buttonDelDepo = new System.Windows.Forms.Button();
             this.listBoxDepo = new System.Windows.Forms.ListBox();
             this.buttonAddDepo = new System.Windows.Forms.Button();
+            this.buttonAddTrain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepo)).BeginInit();
-            this.groupBoxSetTep.SuspendLayout();
             this.groupBoxTakeTrain.SuspendLayout();
             this.groupBoxDepo.SuspendLayout();
             this.SuspendLayout();
@@ -64,106 +55,13 @@
             this.pictureBoxDepo.TabIndex = 0;
             this.pictureBoxDepo.TabStop = false;
             // 
-            // groupBoxSetTep
-            // 
-            this.groupBoxSetTep.Controls.Add(this.labelForms);
-            this.groupBoxSetTep.Controls.Add(this.labelCount);
-            this.groupBoxSetTep.Controls.Add(this.buttonSetTep);
-            this.groupBoxSetTep.Controls.Add(this.buttonThirdForm);
-            this.groupBoxSetTep.Controls.Add(this.comboBoxTrumpetCount);
-            this.groupBoxSetTep.Controls.Add(this.buttonSecondForm);
-            this.groupBoxSetTep.Controls.Add(this.buttonFirstForm);
-            this.groupBoxSetTep.Location = new System.Drawing.Point(775, 134);
-            this.groupBoxSetTep.Name = "groupBoxSetTep";
-            this.groupBoxSetTep.Size = new System.Drawing.Size(200, 116);
-            this.groupBoxSetTep.TabIndex = 5;
-            this.groupBoxSetTep.TabStop = false;
-            this.groupBoxSetTep.Text = "Припарковать тепловоз";
-            // 
-            // labelForms
-            // 
-            this.labelForms.AutoSize = true;
-            this.labelForms.Location = new System.Drawing.Point(6, 57);
-            this.labelForms.Name = "labelForms";
-            this.labelForms.Size = new System.Drawing.Size(69, 13);
-            this.labelForms.TabIndex = 13;
-            this.labelForms.Text = "Форма труб";
-            // 
-            // labelCount
-            // 
-            this.labelCount.AutoSize = true;
-            this.labelCount.Location = new System.Drawing.Point(6, 26);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(66, 13);
-            this.labelCount.TabIndex = 12;
-            this.labelCount.Text = "Кол-во труб";
-            // 
-            // buttonSetTep
-            // 
-            this.buttonSetTep.Location = new System.Drawing.Point(9, 89);
-            this.buttonSetTep.Name = "buttonSetTep";
-            this.buttonSetTep.Size = new System.Drawing.Size(185, 21);
-            this.buttonSetTep.TabIndex = 7;
-            this.buttonSetTep.Text = "Припарковать";
-            this.buttonSetTep.UseVisualStyleBackColor = true;
-            this.buttonSetTep.Click += new System.EventHandler(this.buttonSetTep_Click);
-            // 
-            // buttonThirdForm
-            // 
-            this.buttonThirdForm.Location = new System.Drawing.Point(161, 57);
-            this.buttonThirdForm.Name = "buttonThirdForm";
-            this.buttonThirdForm.Size = new System.Drawing.Size(35, 20);
-            this.buttonThirdForm.TabIndex = 11;
-            this.buttonThirdForm.Text = "3Ф";
-            this.buttonThirdForm.UseVisualStyleBackColor = true;
-            this.buttonThirdForm.AutoSizeChanged += new System.EventHandler(this.buttonTrumpetsForm_Click);
-            // 
-            // comboBoxTrumpetCount
-            // 
-            this.comboBoxTrumpetCount.FormattingEnabled = true;
-            this.comboBoxTrumpetCount.Location = new System.Drawing.Point(78, 23);
-            this.comboBoxTrumpetCount.Name = "comboBoxTrumpetCount";
-            this.comboBoxTrumpetCount.Size = new System.Drawing.Size(65, 21);
-            this.comboBoxTrumpetCount.TabIndex = 6;
-            // 
-            // buttonSecondForm
-            // 
-            this.buttonSecondForm.Location = new System.Drawing.Point(118, 57);
-            this.buttonSecondForm.Name = "buttonSecondForm";
-            this.buttonSecondForm.Size = new System.Drawing.Size(37, 20);
-            this.buttonSecondForm.TabIndex = 10;
-            this.buttonSecondForm.Text = "2Ф";
-            this.buttonSecondForm.UseVisualStyleBackColor = true;
-            this.buttonSecondForm.AutoSizeChanged += new System.EventHandler(this.buttonTrumpetsForm_Click);
-            // 
-            // buttonFirstForm
-            // 
-            this.buttonFirstForm.Location = new System.Drawing.Point(78, 57);
-            this.buttonFirstForm.Name = "buttonFirstForm";
-            this.buttonFirstForm.Size = new System.Drawing.Size(34, 20);
-            this.buttonFirstForm.TabIndex = 9;
-            this.buttonFirstForm.Text = "1Ф";
-            this.buttonFirstForm.UseVisualStyleBackColor = true;
-            this.buttonFirstForm.AutoSizeChanged += new System.EventHandler(this.buttonTrumpetsForm_Click);
-            // 
-            // buttonCreateLoc
-            // 
-            this.buttonCreateLoc.Location = new System.Drawing.Point(775, 106);
-            this.buttonCreateLoc.Name = "buttonCreateLoc";
-            this.buttonCreateLoc.Size = new System.Drawing.Size(200, 22);
-            this.buttonCreateLoc.TabIndex = 8;
-            this.buttonCreateLoc.Text = "Припарковать локомотив";
-            this.buttonCreateLoc.UseVisualStyleBackColor = true;
-            this.buttonCreateLoc.AutoSizeChanged += new System.EventHandler(this.buttonSetLoc_Click);
-            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonSetLoc_Click);
-            // 
             // groupBoxTakeTrain
             // 
             this.groupBoxTakeTrain.Controls.Add(this.buttonCheckTrain);
             this.groupBoxTakeTrain.Controls.Add(this.buttonTakeTrain);
             this.groupBoxTakeTrain.Controls.Add(this.labelPlace);
             this.groupBoxTakeTrain.Controls.Add(this.maskedTextBoxPlace);
-            this.groupBoxTakeTrain.Location = new System.Drawing.Point(775, 256);
+            this.groupBoxTakeTrain.Location = new System.Drawing.Point(775, 151);
             this.groupBoxTakeTrain.Name = "groupBoxTakeTrain";
             this.groupBoxTakeTrain.Size = new System.Drawing.Size(200, 100);
             this.groupBoxTakeTrain.TabIndex = 15;
@@ -264,21 +162,28 @@
             this.buttonAddDepo.UseVisualStyleBackColor = true;
             this.buttonAddDepo.Click += new System.EventHandler(this.buttonAddDepo_Click);
             // 
+            // buttonAddTrain
+            // 
+            this.buttonAddTrain.Location = new System.Drawing.Point(776, 107);
+            this.buttonAddTrain.Name = "buttonAddTrain";
+            this.buttonAddTrain.Size = new System.Drawing.Size(191, 38);
+            this.buttonAddTrain.TabIndex = 17;
+            this.buttonAddTrain.Text = "Поставить поезд";
+            this.buttonAddTrain.UseVisualStyleBackColor = true;
+            this.buttonAddTrain.Click += new System.EventHandler(this.buttonAddTrain_Click);
+            // 
             // FormDepo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 543);
+            this.Controls.Add(this.buttonAddTrain);
             this.Controls.Add(this.groupBoxDepo);
             this.Controls.Add(this.groupBoxTakeTrain);
-            this.Controls.Add(this.groupBoxSetTep);
             this.Controls.Add(this.pictureBoxDepo);
-            this.Controls.Add(this.buttonCreateLoc);
             this.Name = "FormDepo";
             this.Text = "Депо";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepo)).EndInit();
-            this.groupBoxSetTep.ResumeLayout(false);
-            this.groupBoxSetTep.PerformLayout();
             this.groupBoxTakeTrain.ResumeLayout(false);
             this.groupBoxTakeTrain.PerformLayout();
             this.groupBoxDepo.ResumeLayout(false);
@@ -290,15 +195,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxDepo;
-        private System.Windows.Forms.GroupBox groupBoxSetTep;
-        private System.Windows.Forms.Label labelForms;
-        private System.Windows.Forms.Label labelCount;
-        private System.Windows.Forms.Button buttonSetTep;
-        private System.Windows.Forms.Button buttonThirdForm;
-        private System.Windows.Forms.ComboBox comboBoxTrumpetCount;
-        private System.Windows.Forms.Button buttonSecondForm;
-        private System.Windows.Forms.Button buttonFirstForm;
-        private System.Windows.Forms.Button buttonCreateLoc;
         private System.Windows.Forms.GroupBox groupBoxTakeTrain;
         private System.Windows.Forms.Button buttonTakeTrain;
         private System.Windows.Forms.Label labelPlace;
@@ -310,5 +206,6 @@
         private System.Windows.Forms.Button buttonDelDepo;
         private System.Windows.Forms.ListBox listBoxDepo;
         private System.Windows.Forms.Button buttonAddDepo;
+        private System.Windows.Forms.Button buttonAddTrain;
     }
 }
