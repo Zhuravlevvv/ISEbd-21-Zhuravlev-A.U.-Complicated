@@ -9,94 +9,80 @@ namespace WindowsFormsTepl
 {
     public class Depo<T, U> where T : class, ITrain where U : class, IDopElements
     {
-        public readonly T[] _places;
+        private readonly List<T> _places;
+
+        private readonly int _maxCount;
+
         private readonly int pictureWidth;
+
         private readonly int pictureHeight;
 
         private const int _placeSizeWidth = 210;
+
         private const int _placeSizeHeight = 80;
+
         public Depo(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
             pictureWidth = picWidth;
             pictureHeight = picHeight;
-            for (int i = 0; i < _places.Length; i++)
-            {
-                _places[i] = null;
-            }
+            _places = new List<T>();
         }
         public static bool operator +(Depo<T, U> p, T teplovoz)
         {
-            for (int i = 0; i < p._places.Length - 3; i++)
+            if (p._places.Count >= p._maxCount - 3)
             {
-                if (p._places[i] == null)
-                {
-                    p._places[i] = teplovoz;
-                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
-                     i % 5 * _placeSizeHeight + 15, p.pictureWidth,
-                    p.pictureHeight);
-                    return true;
-                }
+                return false;
             }
-            return false;
-        }
-
-        public static bool operator >(Depo<T, U> d, int ind)
-        {
-            return d.CompareHelper() > ind;
-        }
-
-        public static bool operator <(Depo<T, U> d, int ind)
-        {
-            return d.CompareHelper() < ind;
-        }
-        private int CompareHelper()
-        {
-            int cnt = 0;
-            for (int i = 0; i < _places.Length; ++i)
-            {
-                if (_places[i] != null)
-                {
-                    cnt++;
-                }
-            }
-            return cnt;
+            p._places.Add(teplovoz);
+            return true;
         }
         public static T operator -(Depo<T, U> p, int index)
         {
-            if (index >= 0 && index < p._places.Length)
+            if (index <= -1 || index >= p._places.Count)
             {
-                T locomotive = p._places[index];
-                p._places[index] = null;
-                return locomotive;
+                return null;
             }
-            return null;
+            T locomotive = p._places[index];
+            p._places.RemoveAt(index);
+            return locomotive;
         }
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
-                {
-                    _places[i]?.DrawTep(g);
-                }
+                _places[i].SetPosition(2 + i / 5 * _placeSizeWidth + 5, i % 5 *
+                    _placeSizeHeight + 15, pictureWidth, pictureHeight);
+                _places[i]?.DrawTep(g);
             }
         }
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
             //границы праковки
-            g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 480);
-            for (int i = 0; i < _places.Length / 5; i++)
-            {
+            g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
+            for (int i = 0; i < _maxCount / 5; i++)
+            {//отрисовываем, по 5 мест на линии
                 for (int j = 0; j < 6; ++j)
                 {//линия рамзетки места
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
                     i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+            }
+        }
+        public T this[int ind]
+        {
+            get
+            {
+                if (ind >= 0 && ind < _maxCount)
+                {
+                    return _places[ind];
+                }
+                return null;
             }
         }
     }

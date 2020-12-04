@@ -32,25 +32,27 @@
             this.groupBoxSetTep = new System.Windows.Forms.GroupBox();
             this.labelForms = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
-            this.buttonCreateLoc = new System.Windows.Forms.Button();
             this.buttonSetTep = new System.Windows.Forms.Button();
             this.buttonThirdForm = new System.Windows.Forms.Button();
             this.comboBoxTrumpetCount = new System.Windows.Forms.ComboBox();
             this.buttonSecondForm = new System.Windows.Forms.Button();
             this.buttonFirstForm = new System.Windows.Forms.Button();
+            this.buttonCreateLoc = new System.Windows.Forms.Button();
             this.groupBoxTakeTrain = new System.Windows.Forms.GroupBox();
-            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
-            this.labelPlace = new System.Windows.Forms.Label();
+            this.buttonCheckTrain = new System.Windows.Forms.Button();
             this.buttonTakeTrain = new System.Windows.Forms.Button();
-            this.groupBoxCompare = new System.Windows.Forms.GroupBox();
-            this.checkBoxMore = new System.Windows.Forms.CheckBox();
-            this.checkBoxLess = new System.Windows.Forms.CheckBox();
-            this.buttonCompare = new System.Windows.Forms.Button();
-            this.Compare = new System.Windows.Forms.MaskedTextBox();
+            this.labelPlace = new System.Windows.Forms.Label();
+            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
+            this.groupBoxDepo = new System.Windows.Forms.GroupBox();
+            this.labelDepo = new System.Windows.Forms.Label();
+            this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
+            this.buttonDelDepo = new System.Windows.Forms.Button();
+            this.listBoxDepo = new System.Windows.Forms.ListBox();
+            this.buttonAddDepo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepo)).BeginInit();
             this.groupBoxSetTep.SuspendLayout();
             this.groupBoxTakeTrain.SuspendLayout();
-            this.groupBoxCompare.SuspendLayout();
+            this.groupBoxDepo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxDepo
@@ -71,7 +73,7 @@
             this.groupBoxSetTep.Controls.Add(this.comboBoxTrumpetCount);
             this.groupBoxSetTep.Controls.Add(this.buttonSecondForm);
             this.groupBoxSetTep.Controls.Add(this.buttonFirstForm);
-            this.groupBoxSetTep.Location = new System.Drawing.Point(775, 45);
+            this.groupBoxSetTep.Location = new System.Drawing.Point(775, 134);
             this.groupBoxSetTep.Name = "groupBoxSetTep";
             this.groupBoxSetTep.Size = new System.Drawing.Size(200, 116);
             this.groupBoxSetTep.TabIndex = 5;
@@ -95,17 +97,6 @@
             this.labelCount.Size = new System.Drawing.Size(66, 13);
             this.labelCount.TabIndex = 12;
             this.labelCount.Text = "Кол-во труб";
-            // 
-            // buttonCreateLoc
-            // 
-            this.buttonCreateLoc.Location = new System.Drawing.Point(784, 12);
-            this.buttonCreateLoc.Name = "buttonCreateLoc";
-            this.buttonCreateLoc.Size = new System.Drawing.Size(187, 27);
-            this.buttonCreateLoc.TabIndex = 8;
-            this.buttonCreateLoc.Text = "Припарковать локомотив";
-            this.buttonCreateLoc.UseVisualStyleBackColor = true;
-            this.buttonCreateLoc.AutoSizeChanged += new System.EventHandler(this.buttonSetLoc_Click);
-            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonSetLoc_Click);
             // 
             // buttonSetTep
             // 
@@ -155,33 +146,39 @@
             this.buttonFirstForm.UseVisualStyleBackColor = true;
             this.buttonFirstForm.AutoSizeChanged += new System.EventHandler(this.buttonTrumpetsForm_Click);
             // 
+            // buttonCreateLoc
+            // 
+            this.buttonCreateLoc.Location = new System.Drawing.Point(775, 106);
+            this.buttonCreateLoc.Name = "buttonCreateLoc";
+            this.buttonCreateLoc.Size = new System.Drawing.Size(200, 22);
+            this.buttonCreateLoc.TabIndex = 8;
+            this.buttonCreateLoc.Text = "Припарковать локомотив";
+            this.buttonCreateLoc.UseVisualStyleBackColor = true;
+            this.buttonCreateLoc.AutoSizeChanged += new System.EventHandler(this.buttonSetLoc_Click);
+            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonSetLoc_Click);
+            // 
             // groupBoxTakeTrain
             // 
+            this.groupBoxTakeTrain.Controls.Add(this.buttonCheckTrain);
             this.groupBoxTakeTrain.Controls.Add(this.buttonTakeTrain);
             this.groupBoxTakeTrain.Controls.Add(this.labelPlace);
             this.groupBoxTakeTrain.Controls.Add(this.maskedTextBoxPlace);
-            this.groupBoxTakeTrain.Location = new System.Drawing.Point(775, 168);
+            this.groupBoxTakeTrain.Location = new System.Drawing.Point(775, 256);
             this.groupBoxTakeTrain.Name = "groupBoxTakeTrain";
-            this.groupBoxTakeTrain.Size = new System.Drawing.Size(200, 77);
+            this.groupBoxTakeTrain.Size = new System.Drawing.Size(200, 100);
             this.groupBoxTakeTrain.TabIndex = 15;
             this.groupBoxTakeTrain.TabStop = false;
             this.groupBoxTakeTrain.Text = "Забрать поезд";
             // 
-            // maskedTextBoxPlace
+            // buttonCheckTrain
             // 
-            this.maskedTextBoxPlace.Location = new System.Drawing.Point(54, 19);
-            this.maskedTextBoxPlace.Name = "maskedTextBoxPlace";
-            this.maskedTextBoxPlace.Size = new System.Drawing.Size(130, 20);
-            this.maskedTextBoxPlace.TabIndex = 0;
-            // 
-            // labelPlace
-            // 
-            this.labelPlace.AutoSize = true;
-            this.labelPlace.Location = new System.Drawing.Point(6, 22);
-            this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(42, 13);
-            this.labelPlace.TabIndex = 13;
-            this.labelPlace.Text = "Место:";
+            this.buttonCheckTrain.Location = new System.Drawing.Point(9, 71);
+            this.buttonCheckTrain.Name = "buttonCheckTrain";
+            this.buttonCheckTrain.Size = new System.Drawing.Size(183, 23);
+            this.buttonCheckTrain.TabIndex = 15;
+            this.buttonCheckTrain.Text = "Посмотреть";
+            this.buttonCheckTrain.UseVisualStyleBackColor = true;
+            this.buttonCheckTrain.Click += new System.EventHandler(this.buttonCheckTrain_Click);
             // 
             // buttonTakeTrain
             // 
@@ -193,62 +190,86 @@
             this.buttonTakeTrain.UseVisualStyleBackColor = true;
             this.buttonTakeTrain.Click += new System.EventHandler(this.buttonTake_Click);
             // 
-            // groupBoxCompare
+            // labelPlace
             // 
-            this.groupBoxCompare.Controls.Add(this.Compare);
-            this.groupBoxCompare.Controls.Add(this.buttonCompare);
-            this.groupBoxCompare.Controls.Add(this.checkBoxLess);
-            this.groupBoxCompare.Controls.Add(this.checkBoxMore);
-            this.groupBoxCompare.Location = new System.Drawing.Point(775, 251);
-            this.groupBoxCompare.Name = "groupBoxCompare";
-            this.groupBoxCompare.Size = new System.Drawing.Size(200, 72);
-            this.groupBoxCompare.TabIndex = 16;
-            this.groupBoxCompare.TabStop = false;
-            this.groupBoxCompare.Text = "Сравнить";
+            this.labelPlace.AutoSize = true;
+            this.labelPlace.Location = new System.Drawing.Point(6, 22);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(42, 13);
+            this.labelPlace.TabIndex = 13;
+            this.labelPlace.Text = "Место:";
             // 
-            // checkBoxMore
+            // maskedTextBoxPlace
             // 
-            this.checkBoxMore.AutoSize = true;
-            this.checkBoxMore.Location = new System.Drawing.Point(9, 20);
-            this.checkBoxMore.Name = "checkBoxMore";
-            this.checkBoxMore.Size = new System.Drawing.Size(65, 17);
-            this.checkBoxMore.TabIndex = 0;
-            this.checkBoxMore.Text = "Больше";
-            this.checkBoxMore.UseVisualStyleBackColor = true;
+            this.maskedTextBoxPlace.Location = new System.Drawing.Point(54, 19);
+            this.maskedTextBoxPlace.Name = "maskedTextBoxPlace";
+            this.maskedTextBoxPlace.Size = new System.Drawing.Size(130, 20);
+            this.maskedTextBoxPlace.TabIndex = 0;
             // 
-            // checkBoxLess
+            // groupBoxDepo
             // 
-            this.checkBoxLess.AutoSize = true;
-            this.checkBoxLess.Location = new System.Drawing.Point(9, 43);
-            this.checkBoxLess.Name = "checkBoxLess";
-            this.checkBoxLess.Size = new System.Drawing.Size(67, 17);
-            this.checkBoxLess.TabIndex = 1;
-            this.checkBoxLess.Text = "Меньше";
-            this.checkBoxLess.UseVisualStyleBackColor = true;
+            this.groupBoxDepo.Controls.Add(this.labelDepo);
+            this.groupBoxDepo.Controls.Add(this.textBoxNewLevelName);
+            this.groupBoxDepo.Controls.Add(this.buttonDelDepo);
+            this.groupBoxDepo.Controls.Add(this.listBoxDepo);
+            this.groupBoxDepo.Controls.Add(this.buttonAddDepo);
+            this.groupBoxDepo.Location = new System.Drawing.Point(775, 0);
+            this.groupBoxDepo.Name = "groupBoxDepo";
+            this.groupBoxDepo.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxDepo.TabIndex = 16;
+            this.groupBoxDepo.TabStop = false;
+            this.groupBoxDepo.Text = "Депо";
             // 
-            // buttonCompare
+            // labelDepo
             // 
-            this.buttonCompare.Location = new System.Drawing.Point(78, 40);
-            this.buttonCompare.Name = "buttonCompare";
-            this.buttonCompare.Size = new System.Drawing.Size(116, 26);
-            this.buttonCompare.TabIndex = 15;
-            this.buttonCompare.Text = "Сравнить";
-            this.buttonCompare.UseVisualStyleBackColor = true;
-            this.buttonCompare.Click += new System.EventHandler(this.ButtonMore_Click);
+            this.labelDepo.AutoSize = true;
+            this.labelDepo.Location = new System.Drawing.Point(25, 15);
+            this.labelDepo.Name = "labelDepo";
+            this.labelDepo.Size = new System.Drawing.Size(59, 13);
+            this.labelDepo.TabIndex = 4;
+            this.labelDepo.Text = "Имя депо:";
             // 
-            // Compare
+            // textBoxNewLevelName
             // 
-            this.Compare.Location = new System.Drawing.Point(78, 14);
-            this.Compare.Name = "Compare";
-            this.Compare.Size = new System.Drawing.Size(116, 20);
-            this.Compare.TabIndex = 16;
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(90, 12);
+            this.textBoxNewLevelName.Name = "textBoxNewLevelName";
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(104, 20);
+            this.textBoxNewLevelName.TabIndex = 3;
+            // 
+            // buttonDelDepo
+            // 
+            this.buttonDelDepo.Location = new System.Drawing.Point(9, 67);
+            this.buttonDelDepo.Name = "buttonDelDepo";
+            this.buttonDelDepo.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelDepo.TabIndex = 2;
+            this.buttonDelDepo.Text = "Удалить";
+            this.buttonDelDepo.UseVisualStyleBackColor = true;
+            this.buttonDelDepo.Click += new System.EventHandler(this.buttonDelDepo_Click);
+            // 
+            // listBoxDepo
+            // 
+            this.listBoxDepo.FormattingEnabled = true;
+            this.listBoxDepo.Location = new System.Drawing.Point(90, 38);
+            this.listBoxDepo.Name = "listBoxDepo";
+            this.listBoxDepo.Size = new System.Drawing.Size(104, 56);
+            this.listBoxDepo.TabIndex = 1;
+            // 
+            // buttonAddDepo
+            // 
+            this.buttonAddDepo.Location = new System.Drawing.Point(9, 38);
+            this.buttonAddDepo.Name = "buttonAddDepo";
+            this.buttonAddDepo.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddDepo.TabIndex = 0;
+            this.buttonAddDepo.Text = " Создать";
+            this.buttonAddDepo.UseVisualStyleBackColor = true;
+            this.buttonAddDepo.Click += new System.EventHandler(this.buttonAddDepo_Click);
             // 
             // FormDepo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 543);
-            this.Controls.Add(this.groupBoxCompare);
+            this.Controls.Add(this.groupBoxDepo);
             this.Controls.Add(this.groupBoxTakeTrain);
             this.Controls.Add(this.groupBoxSetTep);
             this.Controls.Add(this.pictureBoxDepo);
@@ -260,8 +281,8 @@
             this.groupBoxSetTep.PerformLayout();
             this.groupBoxTakeTrain.ResumeLayout(false);
             this.groupBoxTakeTrain.PerformLayout();
-            this.groupBoxCompare.ResumeLayout(false);
-            this.groupBoxCompare.PerformLayout();
+            this.groupBoxDepo.ResumeLayout(false);
+            this.groupBoxDepo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -282,10 +303,12 @@
         private System.Windows.Forms.Button buttonTakeTrain;
         private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
-        private System.Windows.Forms.GroupBox groupBoxCompare;
-        private System.Windows.Forms.MaskedTextBox Compare;
-        private System.Windows.Forms.Button buttonCompare;
-        private System.Windows.Forms.CheckBox checkBoxLess;
-        private System.Windows.Forms.CheckBox checkBoxMore;
+        private System.Windows.Forms.Button buttonCheckTrain;
+        private System.Windows.Forms.GroupBox groupBoxDepo;
+        private System.Windows.Forms.Label labelDepo;
+        private System.Windows.Forms.TextBox textBoxNewLevelName;
+        private System.Windows.Forms.Button buttonDelDepo;
+        private System.Windows.Forms.ListBox listBoxDepo;
+        private System.Windows.Forms.Button buttonAddDepo;
     }
 }

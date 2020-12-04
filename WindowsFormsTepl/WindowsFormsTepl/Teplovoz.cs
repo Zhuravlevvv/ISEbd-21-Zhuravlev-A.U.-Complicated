@@ -14,8 +14,8 @@ namespace WindowsFormsTepl
         public bool Tube { private set; get; }
         public bool Line { private set; get; }
 
-        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, Color trumpColor,
-         int trumpet, int trumpetsForm, bool line, bool tube)
+        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, Color trumpColor, bool line, bool tube,
+         int trumpet, int trumpetsForm)
         : base(maxSpeed, weight, mainColor)
         {
             MaxSpeed = maxSpeed;
