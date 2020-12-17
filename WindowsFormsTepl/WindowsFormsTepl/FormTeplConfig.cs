@@ -57,7 +57,7 @@ namespace WindowsFormsTepl
                     break;
                 case "Тепловоз":
                     train = new Teplovoz((int)numericUpDownMaxSpeed.Value, (int)numericUpDownWeight.Value,
-                        Color.Green, Color.Gray, checkBoxLines.Checked, checkBoxTrumpets.Checked, 1,"TrumpetsStandart");
+                         Color.Green, Color.Gray, checkBoxLines.Checked, checkBoxDopOrnament.Checked, checkBoxTrumpets.Checked, 0, "TrumpetsStandart");
                     break;
             }
             DrawTep();

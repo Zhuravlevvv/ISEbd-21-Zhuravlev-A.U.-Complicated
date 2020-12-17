@@ -41,17 +41,27 @@
             this.listBoxDepo = new System.Windows.Forms.ListBox();
             this.buttonAddDepo = new System.Windows.Forms.Button();
             this.buttonAddTrain = new System.Windows.Forms.Button();
+            this.msMenu = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.одноДепоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеДепоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.одноДепоToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеДепоToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepo)).BeginInit();
             this.groupBoxTakeTrain.SuspendLayout();
             this.groupBoxDepo.SuspendLayout();
+            this.msMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxDepo
             // 
-            this.pictureBoxDepo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxDepo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxDepo.Location = new System.Drawing.Point(0, 25);
             this.pictureBoxDepo.Name = "pictureBoxDepo";
-            this.pictureBoxDepo.Size = new System.Drawing.Size(769, 543);
+            this.pictureBoxDepo.Size = new System.Drawing.Size(769, 518);
             this.pictureBoxDepo.TabIndex = 0;
             this.pictureBoxDepo.TabStop = false;
             // 
@@ -61,7 +71,7 @@
             this.groupBoxTakeTrain.Controls.Add(this.buttonTakeTrain);
             this.groupBoxTakeTrain.Controls.Add(this.labelPlace);
             this.groupBoxTakeTrain.Controls.Add(this.maskedTextBoxPlace);
-            this.groupBoxTakeTrain.Location = new System.Drawing.Point(775, 151);
+            this.groupBoxTakeTrain.Location = new System.Drawing.Point(775, 175);
             this.groupBoxTakeTrain.Name = "groupBoxTakeTrain";
             this.groupBoxTakeTrain.Size = new System.Drawing.Size(200, 100);
             this.groupBoxTakeTrain.TabIndex = 15;
@@ -111,7 +121,7 @@
             this.groupBoxDepo.Controls.Add(this.buttonDelDepo);
             this.groupBoxDepo.Controls.Add(this.listBoxDepo);
             this.groupBoxDepo.Controls.Add(this.buttonAddDepo);
-            this.groupBoxDepo.Location = new System.Drawing.Point(775, 0);
+            this.groupBoxDepo.Location = new System.Drawing.Point(775, 25);
             this.groupBoxDepo.Name = "groupBoxDepo";
             this.groupBoxDepo.Size = new System.Drawing.Size(200, 100);
             this.groupBoxDepo.TabIndex = 16;
@@ -164,13 +174,88 @@
             // 
             // buttonAddTrain
             // 
-            this.buttonAddTrain.Location = new System.Drawing.Point(776, 107);
+            this.buttonAddTrain.Location = new System.Drawing.Point(778, 131);
             this.buttonAddTrain.Name = "buttonAddTrain";
             this.buttonAddTrain.Size = new System.Drawing.Size(191, 38);
             this.buttonAddTrain.TabIndex = 17;
             this.buttonAddTrain.Text = "Поставить поезд";
             this.buttonAddTrain.UseVisualStyleBackColor = true;
             this.buttonAddTrain.Click += new System.EventHandler(this.buttonAddTrain_Click);
+            // 
+            // msMenu
+            // 
+            this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.msMenu.Location = new System.Drawing.Point(0, 0);
+            this.msMenu.Name = "msMenu";
+            this.msMenu.Size = new System.Drawing.Size(979, 24);
+            this.msMenu.TabIndex = 18;
+            this.msMenu.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.одноДепоToolStripMenuItem,
+            this.всеДепоToolStripMenuItem});
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.одноДепоToolStripMenuItem1,
+            this.всеДепоToolStripMenuItem1});
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            // 
+            // одноДепоToolStripMenuItem
+            // 
+            this.одноДепоToolStripMenuItem.Name = "одноДепоToolStripMenuItem";
+            this.одноДепоToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.одноДепоToolStripMenuItem.Text = "Одно депо";
+            this.одноДепоToolStripMenuItem.Click += new System.EventHandler(this.одноДепоToolStripMenuItem_Click);
+            // 
+            // всеДепоToolStripMenuItem
+            // 
+            this.всеДепоToolStripMenuItem.Name = "всеДепоToolStripMenuItem";
+            this.всеДепоToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.всеДепоToolStripMenuItem.Text = "Все депо";
+            this.всеДепоToolStripMenuItem.Click += new System.EventHandler(this.всеДепоToolStripMenuItem_Click);
+            // 
+            // одноДепоToolStripMenuItem1
+            // 
+            this.одноДепоToolStripMenuItem1.Name = "одноДепоToolStripMenuItem1";
+            this.одноДепоToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.одноДепоToolStripMenuItem1.Text = "Одно депо";
+            this.одноДепоToolStripMenuItem1.Click += new System.EventHandler(this.одноДепоToolStripMenuItem1_Click);
+            // 
+            // всеДепоToolStripMenuItem1
+            // 
+            this.всеДепоToolStripMenuItem1.Name = "всеДепоToolStripMenuItem1";
+            this.всеДепоToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.всеДепоToolStripMenuItem1.Text = "Все депо";
+            this.всеДепоToolStripMenuItem1.Click += new System.EventHandler(this.всеДепоToolStripMenuItem1_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "default";
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "default";
+            this.openFileDialog.Filter = "txt file | *.txt";
             // 
             // FormDepo
             // 
@@ -181,6 +266,7 @@
             this.Controls.Add(this.groupBoxDepo);
             this.Controls.Add(this.groupBoxTakeTrain);
             this.Controls.Add(this.pictureBoxDepo);
+            this.Controls.Add(this.msMenu);
             this.Name = "FormDepo";
             this.Text = "Депо";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepo)).EndInit();
@@ -188,7 +274,10 @@
             this.groupBoxTakeTrain.PerformLayout();
             this.groupBoxDepo.ResumeLayout(false);
             this.groupBoxDepo.PerformLayout();
+            this.msMenu.ResumeLayout(false);
+            this.msMenu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -207,5 +296,15 @@
         private System.Windows.Forms.ListBox listBoxDepo;
         private System.Windows.Forms.Button buttonAddDepo;
         private System.Windows.Forms.Button buttonAddTrain;
+        private System.Windows.Forms.MenuStrip msMenu;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem одноДепоToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всеДепоToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem одноДепоToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem всеДепоToolStripMenuItem1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

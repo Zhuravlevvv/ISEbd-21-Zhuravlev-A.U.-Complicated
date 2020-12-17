@@ -19,18 +19,7 @@ namespace WindowsFormsTepl
         public void SetDopColor(Color color)
         {
             DopColor = color;
-            if (TrumpetsForm == "TrumpetsStandart")
-            {
-                trumpet = new TrumpetsStandart(Trumpets, DopColor);
-            }
-            else if (TrumpetsForm == "TrumpetsTriangle")
-            {
-                trumpet = new TrumpetsTriangle(Trumpets, DopColor);
-            }
-            else if (TrumpetsForm == "TrumpetsTrapeze")
-            {
-                trumpet = new TrumpetsTrapeze(Trumpets, DopColor);
-            }
+            SetTrampet();
         }
         public void SetTrumpets(IDopElements trumpets)
         {
@@ -42,19 +31,9 @@ namespace WindowsFormsTepl
         {
             Trumpets = trumpetNumber;
         }
-        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, bool line, bool tube,
-         int trumpets, string trumpetsForm)
-        : base(maxSpeed, weight, mainColor)
-        {
-            MaxSpeed = maxSpeed;
-            Weight = weight;
-            MainColor = mainColor;
-            DopColor = dopColor;
-            Tube = tube;
-            Line = line;
-            Trumpets = trumpets;
-            TrumpetsForm = trumpetsForm;
 
+        public void SetTrampet()
+        {
             if (TrumpetsForm == "TrumpetsStandart")
             {
                 trumpet = new TrumpetsStandart(Trumpets, DopColor);
@@ -68,10 +47,42 @@ namespace WindowsFormsTepl
                 trumpet = new TrumpetsTrapeze(Trumpets, DopColor);
             }
         }
-        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor) :
-           base(maxSpeed, weight, mainColor)
+        public Teplovoz(int maxSpeed, float weight, Color mainColor, Color dopColor, bool line, bool tube, bool dopOrnament,
+         int trumpets, string trumpetsForm)
+        : base(maxSpeed, weight, mainColor)
         {
             DopColor = dopColor;
+            Line = line;
+            Tube = tube;
+            DopOrnament = dopOrnament;
+            Trumpets = trumpets;
+            TrumpetsForm = trumpetsForm;
+            SetTrampet();
+        }
+        public Teplovoz(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 9)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Line = Convert.ToBoolean(strs[4]);
+                Tube = Convert.ToBoolean(strs[5]);
+                DopOrnament = Convert.ToBoolean(strs[6]);
+                Trumpets = Convert.ToInt32(strs[7]);
+                TrumpetsForm = strs[8];
+                SetTrampet();
+            }
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}" +
+                   $"{separator}{Line}{separator}{Tube}" +
+                   $"{separator}{DopOrnament}" +
+                   $"{separator}{Trumpets}" +
+                   $"{separator}{TrumpetsForm}";
         }
 
         public override void DrawTep(Graphics g) //отрисовка

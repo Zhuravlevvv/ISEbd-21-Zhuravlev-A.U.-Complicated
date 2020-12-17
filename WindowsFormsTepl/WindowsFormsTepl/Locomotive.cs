@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using static System.Collections.IEnumerable;
 
 namespace WindowsFormsTepl
 {
@@ -11,6 +12,8 @@ namespace WindowsFormsTepl
     {
         protected readonly int trainWidth = 120;
         protected readonly int trainHeight = 80;
+
+        protected readonly char separator = ';';
 
         public Locomotive(int maxSpeed, float weight, Color mainColor)
         {
@@ -26,6 +29,20 @@ namespace WindowsFormsTepl
             MainColor = mainColor;
             this.trainWidth = trainWidth;
             this.trainHeight = trainHeight;
+        }
+        public Locomotive(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
         }
         public override void MoveTransport(Direction direction) //передвижение
         {

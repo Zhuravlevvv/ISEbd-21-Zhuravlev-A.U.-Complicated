@@ -85,5 +85,9 @@ namespace WindowsFormsTepl
                 return null;
             }
         }
+        public void ClearPlaces()
+        {
+            _places.Clear();
+        }
     }
 }
