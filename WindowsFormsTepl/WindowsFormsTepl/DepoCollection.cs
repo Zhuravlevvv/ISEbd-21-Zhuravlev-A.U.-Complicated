@@ -116,7 +116,7 @@ namespace WindowsFormsTepl
             }
             if (!depoStages.ContainsKey(dockName))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
@@ -154,7 +154,7 @@ namespace WindowsFormsTepl
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
@@ -167,7 +167,7 @@ namespace WindowsFormsTepl
                 else
                 {
                     //если нет такой записи, то это не те данные
-                    return false;
+                    throw new FileLoadException("Неверный формат файла");
                 }
                 line = sr.ReadLine();
                 Train train = null;
@@ -191,7 +191,7 @@ namespace WindowsFormsTepl
                         var result = depoStages[key] + train;
                         if (!result)
                         {
-                            return false;
+                            throw new DepoOverflowException();
                         }
                         line = sr.ReadLine();
                     }
@@ -203,7 +203,7 @@ namespace WindowsFormsTepl
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
@@ -213,7 +213,7 @@ namespace WindowsFormsTepl
                 else
                 {
                     //если нет такой записи, то это не те данные
-                    return false;
+                    throw new FileLoadException("Неверный формат файла");
                 }
                 line = sr.ReadLine();
                 Train train = null;
@@ -244,7 +244,7 @@ namespace WindowsFormsTepl
                         var result = depoStages[key] + train;
                         if (!result)
                         {
-                            return false;
+                            throw new DepoOverflowException();
                         }
                         line = sr.ReadLine();
                     }

@@ -44,9 +44,9 @@
             this.msMenu = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.одноДепоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всеДепоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.одноДепоToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.всеДепоToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -161,6 +161,7 @@
             this.listBoxDepo.Name = "listBoxDepo";
             this.listBoxDepo.Size = new System.Drawing.Size(104, 56);
             this.listBoxDepo.TabIndex = 1;
+            this.listBoxDepo.SelectedIndexChanged += new System.EventHandler(this.listBoxDepo_SelectedIndexChanged);
             // 
             // buttonAddDepo
             // 
@@ -207,8 +208,22 @@
             this.одноДепоToolStripMenuItem,
             this.всеДепоToolStripMenuItem});
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            // 
+            // одноДепоToolStripMenuItem
+            // 
+            this.одноДепоToolStripMenuItem.Name = "одноДепоToolStripMenuItem";
+            this.одноДепоToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.одноДепоToolStripMenuItem.Text = "Одно депо";
+            this.одноДепоToolStripMenuItem.Click += new System.EventHandler(this.одноДепоToolStripMenuItem_Click);
+            // 
+            // всеДепоToolStripMenuItem
+            // 
+            this.всеДепоToolStripMenuItem.Name = "всеДепоToolStripMenuItem";
+            this.всеДепоToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.всеДепоToolStripMenuItem.Text = "Все депо";
+            this.всеДепоToolStripMenuItem.Click += new System.EventHandler(this.всеДепоToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
@@ -216,34 +231,20 @@
             this.одноДепоToolStripMenuItem1,
             this.всеДепоToolStripMenuItem1});
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
-            // 
-            // одноДепоToolStripMenuItem
-            // 
-            this.одноДепоToolStripMenuItem.Name = "одноДепоToolStripMenuItem";
-            this.одноДепоToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.одноДепоToolStripMenuItem.Text = "Одно депо";
-            this.одноДепоToolStripMenuItem.Click += new System.EventHandler(this.одноДепоToolStripMenuItem_Click);
-            // 
-            // всеДепоToolStripMenuItem
-            // 
-            this.всеДепоToolStripMenuItem.Name = "всеДепоToolStripMenuItem";
-            this.всеДепоToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.всеДепоToolStripMenuItem.Text = "Все депо";
-            this.всеДепоToolStripMenuItem.Click += new System.EventHandler(this.всеДепоToolStripMenuItem_Click);
             // 
             // одноДепоToolStripMenuItem1
             // 
             this.одноДепоToolStripMenuItem1.Name = "одноДепоToolStripMenuItem1";
-            this.одноДепоToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.одноДепоToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.одноДепоToolStripMenuItem1.Text = "Одно депо";
             this.одноДепоToolStripMenuItem1.Click += new System.EventHandler(this.одноДепоToolStripMenuItem1_Click);
             // 
             // всеДепоToolStripMenuItem1
             // 
             this.всеДепоToolStripMenuItem1.Name = "всеДепоToolStripMenuItem1";
-            this.всеДепоToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.всеДепоToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.всеДепоToolStripMenuItem1.Text = "Все депо";
             this.всеДепоToolStripMenuItem1.Click += new System.EventHandler(this.всеДепоToolStripMenuItem1_Click);
             // 

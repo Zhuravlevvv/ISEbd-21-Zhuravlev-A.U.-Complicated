@@ -34,20 +34,20 @@ namespace WindowsFormsTepl
         {
             if (p._places.Count >= p._maxCount - 3)
             {
-                return false;
+                throw new DepoOverflowException();
             }
             p._places.Add(teplovoz);
             return true;
         }
-        public static T operator -(Depo<T, U> p, int index)
+        public static T operator -(Depo<T, U> d, int index)
         {
-            if (index <= -1 || index >= p._places.Count)
+            if (index <= -1 || index >= d._places.Count)
             {
-                return null;
+                throw new DepoNotFoundException(index);
             }
-            T locomotive = p._places[index];
-            p._places.RemoveAt(index);
-            return locomotive;
+            T train = d._places[index];
+            d._places.RemoveAt(index);
+            return train;
         }
         public void Draw(Graphics g)
         {
